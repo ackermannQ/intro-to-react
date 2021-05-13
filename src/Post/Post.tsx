@@ -1,6 +1,12 @@
 import React from 'react'
 
-export default function Post() {
+interface PostProps {
+   author: string;
+   content: string;
+   title: string;
+}
+
+export default function Post(props: PostProps) {
    let today = new Date();
    const dd = today.getDate();
    const mm = today.getMonth() + 1;
@@ -10,12 +16,10 @@ export default function Post() {
 
    return (
       <div style={{marginTop: '5%', marginLeft: '25%', marginRight: '25%'}}>
-         <h1>Javascript and ReactJS</h1>
-         <h4>Quentin Ackermann - {date}</h4> 
+         <h1>{props.title}</h1>
+         <h4>{props.author} - {date}</h4> 
          <p>
-            The main idea in React is to use components. You can create functions and classes called components (function-component and class-component).  
-            I had a hard time understanding what exactly is a component when I started using react, but actually it is anything, really. It's a way of splitting your application to loosely couple the logic.  
-            Let's say you are building ... a blog!
+            {props.content}
          </p>
       </div>
    );
